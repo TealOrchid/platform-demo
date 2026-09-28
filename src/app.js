@@ -1,6 +1,7 @@
 const http = require("node:http");
 const PORT = Number(process.env.PORT || 8080);
 const APP_NAME = "platform-demo";
+
 const server = http.createServer((req, res) => {
   res.setHeader("Content-Type", "application/json");
   if (req.url === "/") {
@@ -26,4 +27,7 @@ const server = http.createServer((req, res) => {
   res.writeHead(404);
   res.end(JSON.stringify({ error: "not found" }));
 });
+
 server.listen(PORT, () => console.log(`${APP_NAME} listening on ${PORT}.`));
+
+module.exports = server;
